@@ -11,7 +11,7 @@ class ProtAnisoMulti(BaseAnisotropy):
         beta_p, A_p, n_p, beta_a, A_a, n_a
     """
 
-    def __init__(self, beta_a, A_a, n_a,
+    def __init__(self, beta_a, A_a,
                  beta_p, A_p, n_p,
                  gamma_max, **kwargs):
 
@@ -20,10 +20,10 @@ class ProtAnisoMulti(BaseAnisotropy):
 
         self.beta_a = beta_a
         self.A_a = A_a
-        self.n_a = n_a
         self.beta_p = beta_p
         self.A_p = A_p
         self.n_p = n_p
+        self.n_a = (1 - self.n_p) / 2
         self.gamma_max = gamma_max
 
     
