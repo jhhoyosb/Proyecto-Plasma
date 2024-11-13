@@ -10,7 +10,7 @@ class BaseAnisotropy:
 
 
     def __init__(self, xr_max, xr_min, xi_max, xi_min, y_max,
-                 np, nir, nir_interp, interp_grade, epsi, epsi_muller):
+                 np, nir, nir_interp, interp_grade, epsi, eps_muller):
 
         # Data for initial localization of zeros of D(w,k)=0=Re(D)+i*Im(D)
         # Range for real and imaginary part of frequency
@@ -28,7 +28,7 @@ class BaseAnisotropy:
         self.nir_interp = nir_interp      # Points without interpolation
         self.interp_grade = interp_grade  # Polynomial interpolation grade
         self.epsi = epsi
-        self.eps_muller = epsi_muller
+        self.eps_muller = eps_muller
         self.yaxis = linspace(-self.y_max, self.y_max, self.nir)
 
 
@@ -105,7 +105,7 @@ class BaseAnisotropy:
         """
 
         nroots = len(roots_guest)
-        roots = zeros( (self.nir, nroots), type=complex )
+        roots = zeros( (self.nir, nroots), dtype=complex )
         roots_yfix = array( [guest[0] + guest[1] * 1j for guest in roots_guest] )
 
         # first set of roots
