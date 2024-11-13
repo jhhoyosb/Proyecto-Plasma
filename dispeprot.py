@@ -2,7 +2,7 @@ from z_plasma import z_plasma
 from numpy import sqrt
 
 
-def dispeprot(x, beta, y, A):
+def dispeprot(x, beta=None, y=None, A=None):
     # Eq. 227 from Davidson
     # Multiply by -\omega_{pi}^{-2}
     # \(x=\frac{\omega}{\pm\omega_{ci}}\)
@@ -14,7 +14,7 @@ def dispeprot(x, beta, y, A):
     drst = y**2 + x - (psi * A + 1./(vth * y)) * z_plasma(psi) - A + 1.
     return drst
 
-def dispeprot_pa(x, y, beta_p, A_p, n_p, beta_a, A_a, n_a):
+def dispeprot_pa(x, y=None, beta_p=None, A_p=None, n_p=None, beta_a=None, A_a=None, n_a=None):
     vth_p = sqrt(beta_p)
     vth_a = sqrt(beta_a)
     psi_p = (x - 1.) / (y * vth_p)
@@ -24,7 +24,7 @@ def dispeprot_pa(x, y, beta_p, A_p, n_p, beta_a, A_a, n_a):
     drst = y**2 + dis_p + dis_a * n_a / n_p
     return drst
 
-def dispeprot_multi(x, y, beta, A, n, m, q):
+def dispeprot_multi(x, y=None, beta=None, A=None, n=None, m=None, q=None):
     vth = sqrt(beta)
     psi = (x - q/m)/(y*vth)
     dis = (n*(m*x-(psi*A+1/(y*vth))*z_plasma(psi)-A+1))/n[0]
